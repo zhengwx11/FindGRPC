@@ -329,10 +329,14 @@ function(GRPC_GENERATE_CPP SRCS HDRS)
 
     list(APPEND _protobuf_include_path -I ${FIL_DIR})
     list(APPEND ${SRCS} "${CMAKE_BINARY_DIR}/${FIL_WE}.grpc.pb.cc")
+    list(APPEND ${SRCS} "${CMAKE_BINARY_DIR}/${FIL_WE}.pb.cc")
     list(APPEND ${HDRS} "${CMAKE_BINARY_DIR}/${FIL_WE}.grpc.pb.h")
+    list(APPEND ${HDRS} "${CMAKE_BINARY_DIR}/${FIL_WE}.pb.h")
     add_custom_command(
       OUTPUT "${CMAKE_BINARY_DIR}/${FIL_WE}.grpc.pb.cc"
+             "${CMAKE_BINARY_DIR}/${FIL_WE}.pb.cc"
              "${CMAKE_BINARY_DIR}/${FIL_WE}.grpc.pb.h"
+             "${CMAKE_BINARY_DIR}/${FIL_WE}.pb.h"
       COMMAND  ${PROTOBUF_PROTOC_EXECUTABLE}
       ARGS --cpp_out ${CMAKE_BINARY_DIR} 
       --grpc_out  ${CMAKE_BINARY_DIR} 
