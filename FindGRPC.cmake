@@ -334,7 +334,11 @@ function(GRPC_GENERATE_CPP SRCS HDRS)
       OUTPUT "${CMAKE_BINARY_DIR}/${FIL_WE}.grpc.pb.cc"
              "${CMAKE_BINARY_DIR}/${FIL_WE}.grpc.pb.h"
       COMMAND  ${PROTOBUF_PROTOC_EXECUTABLE}
-      ARGS --grpc_out  ${CMAKE_BINARY_DIR} ${_protobuf_include_path} --plugin=protoc-gen-grpc=${GRPC_CPP_PLUGIN} ${ABS_FIL}
+      ARGS --cpp_out ${CMAKE_BINARY_DIR} 
+      --grpc_out  ${CMAKE_BINARY_DIR} 
+      ${_protobuf_include_path} 
+      --plugin=protoc-gen-grpc=${GRPC_CPP_PLUGIN} 
+      ${ABS_FIL}
       DEPENDS ${ABS_FIL} ${PROTOBUF_PROTOC_EXECUTABLE}
       COMMENT "Running C++ protocol buffer compiler on ${FIL} using gRPC plugin"
       VERBATIM )
